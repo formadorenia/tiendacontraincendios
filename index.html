@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda | Seguridad contra incendios</title>
+  <meta name="description" content="Compra productos de seguridad contra incendios: mantas ignífugas y sistemas MAUS. Pagos seguros con Stripe."/>
+  <style>
+    :root{
+      --bg:#0f1115;
+      --card:#171923;
+      --text:#e6e6e6;
+      --muted:#9aa0aa;
+      --accent:#6ee7b7;
+      --accent-2:#8ab4f8;
+      --outline:#2a2f3a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 80% -10%, #1b2030 0%, #0f1115 60%, #0b0d12 100%);
+      color:var(--text);
+      line-height:1.5;
+    }
+    header{
+      padding:32px 20px 12px;
+      text-align:center;
+    }
+    .title{
+      font-size: clamp(24px, 3vw, 36px);
+      margin:0 0 6px 0;
+      letter-spacing:.2px;
+    }
+    .sub{
+      color:var(--muted);
+      margin-top:0;
+      font-size: clamp(14px, 1.5vw, 16px);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:18px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto 80px;
+    }
+    .card{
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--outline);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover{ transform: translateY(-2px); border-color:#3a4152; box-shadow:0 18px 40px rgba(0,0,0,.35); }
+    .media{
+      aspect-ratio: 16/9;
+      background:#0b0d12;
+      display:block;
+      width:100%;
+      object-fit:cover;
+      border-bottom:1px solid var(--outline);
+    }
+    .body{ padding:16px; }
+    .name{ font-size: clamp(18px,2vw,22px); margin:4px 0 8px; }
+    .desc{ color:var(--muted); margin:0 0 12px; min-height: 48px;}
+    .price{ font-weight:700; font-size:18px; margin: 0 0 14px; }
+    .cta{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .btn{
+      border:none;
+      padding:10px 16px;
+      border-radius:12px;
+      font-weight:600;
+      cursor:pointer;
+      transition: transform .05s ease, background .15s ease, box-shadow .2s ease;
+      text-decoration:none;
+      color:#0b0d12;
+      background: linear-gradient(135deg, var(--accent), #22d3ee);
+      box-shadow: 0 6px 16px rgba(34,211,238,.25);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.secondary{
+      background: transparent;
+      color: var(--text);
+      border:1px solid var(--outline);
+      box-shadow:none;
+    }
+    footer{
+      max-width:1100px; margin: 0 auto; padding: 0 20px 50px;
+      color: var(--muted); font-size: 14px; text-align:center;
+    }
+    @media(min-width:720px){
+      .card{ grid-column: span 6; }
+    }
+    @media(min-width:1024px){
+      .card{ grid-column: span 4; }
+    }
+    /* tiny badge */
+    .badge{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      color:#0b0d12;
+      background: var(--accent-2);
+      margin-left:8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="title">Tienda de Seguridad • Plana Fàbrega</h1>
+    <p class="sub">Compra con pagos 100% seguros a través de Stripe. Elige tu producto y finaliza la compra en nuestro checkout cifrado.</p>
+  </header>
+
+  <main class="grid">
+
+    <!-- PRODUCTO 1 -->
+    <article class="card">
+      <img class="media" src="https://images.unsplash.com/photo-1581091870622-e0b1a7a2c49b?q=80&w=1600&auto=format&fit=crop" alt="Car Fire Blanket PRO cubriendo coche"/>
+      <div class="body">
+        <h2 class="name">Car Fire Blanket PRO <span class="badge">Top ventas</span></h2>
+        <p class="desc">Tu escudo contra incendios en vehículos eléctricos y de combustión. Resiste temperaturas extremas, se despliega en segundos y es reutilizable.</p>
+        <p class="price">999,00 €</p>
+        <div class="cta">
+          <!-- Enlace REAL de Stripe -->
+          <a class="btn" href="https://buy.stripe.com/fZu28q227cft5TKemL63K03" target="_blank" rel="noopener">Comprar ahora</a>
+          <a class="btn secondary" href="#faq">Más información</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCTO 2 -->
+    <article class="card">
+      <img class="media" src="https://images.unsplash.com/photo-1520975922284-9e0ce8271e74?q=80&w=1600&auto=format&fit=crop" alt="Extintor automático adhesivo MAUS Stixx PRO"/>
+      <div class="body">
+        <h2 class="name">Extintor automático adhesivo MAUS Stixx PRO</h2>
+        <p class="desc">Extinción automática por activación térmica. Ideal para cuadros eléctricos y zonas técnicas.</p>
+        <p class="price">65,00 €</p>
+        <div class="cta">
+          <!-- Sustituye # por tu enlace de pago de Stripe para este producto -->
+          <a class="btn" href="#" target="_blank" rel="noopener">Comprar ahora</a>
+          <a class="btn secondary" href="#faq">Más información</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCTO 3 -->
+    <article class="card">
+      <img class="media" src="https://images.unsplash.com/photo-1574958269340-29e1e2a0e1dc?q=80&w=1600&auto=format&fit=crop" alt="Extintor portátil MAUS Xtin Klein"/>
+      <div class="body">
+        <h2 class="name">Extintor portátil MAUS Xtin Klein</h2>
+        <p class="desc">Potente, limpio y compacto. Perfecto para vehículos, embarcaciones y hogares.</p>
+        <p class="price">99,00 €</p>
+        <div class="cta">
+          <a class="btn" href="#" target="_blank" rel="noopener">Comprar ahora</a>
+          <a class="btn secondary" href="#faq">Más información</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PRODUCTO 4 -->
+    <article class="card">
+      <img class="media" src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" alt="Detector autónomo wifi MAUS"/>
+      <div class="body">
+        <h2 class="name">Detector autónomo WiFi MAUS</h2>
+        <p class="desc">Detección temprana con notificaciones en tu móvil y alarma integrada. Instalación sencilla.</p>
+        <p class="price">44,00 €</p>
+        <div class="cta">
+          <a class="btn" href="#" target="_blank" rel="noopener">Comprar ahora</a>
+          <a class="btn secondary" href="#faq">Más información</a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <section id="faq" style="max-width:900px;margin:0 auto 60px;padding:0 20px;">
+    <h3>Preguntas frecuentes</h3>
+    <details>
+      <summary>¿Cómo se realiza el pago?</summary>
+      <p>Al pulsar “Comprar ahora” irás a un checkout seguro de Stripe, donde podrás pagar con tarjeta, Apple Pay, Google Pay y otros métodos disponibles.</p>
+    </details>
+    <details>
+      <summary>¿Puedo comprar varias unidades?</summary>
+      <p>Sí. En el checkout podrás ajustar la cantidad (si está habilitado para ese producto) antes de finalizar el pago.</p>
+    </details>
+    <details>
+      <summary>¿Factura y envío?</summary>
+      <p>Recibirás un recibo por email automáticamente. Si necesitas factura, indícalo en el formulario de compra. El envío se gestiona tras recibir el pago.</p>
+    </details>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Plana Fàbrega Asturias — Seguridad contra incendios. <br/>
+    Pagos procesados por Stripe.
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
