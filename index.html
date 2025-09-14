@@ -151,46 +151,23 @@
   </footer>
 
   <script> document.getElementById('y').textContent = new Date().getFullYear(); </script>
-  <!-- Botón flotante de WhatsApp (pegar justo antes de </body>) -->
-<style><!-- WhatsApp flotante con rótulo -->
+  
 <!-- WhatsApp flotante abajo-izquierda con rótulo -->
 <style>
-  .whatsapp-wrap{
-    position: fixed;
-    left: 16px;               /* 👈 esquina inferior izquierda */
+  #wa-wrap{
+    position: fixed !important;
+    left: 16px;
     bottom: 16px;
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 99999;
+    z-index: 2147483647;      /* por encima de todo */
+    pointer-events: none;     /* el contenedor no captura clics */
   }
+  #wa-wrap .wa-btn,
+  #wa-wrap .wa-label{ pointer-events: auto; } /* solo botón y label clicables */
 
-  .whatsapp-label{
-    position: relative;
-    background: #25D366;      /* verde WhatsApp */
-    color: #fff;              /* texto blanco */
-    padding: 10px 12px;
-    border-radius: 999px;
-    font-weight: 700;
-    box-shadow: 0 6px 16px rgba(0,0,0,.25);
-  }
-  /* “colita” que apunta al botón */
-  .whatsapp-label::after{
-    content:"";
-    position:absolute;
-    right: -6px;              /* apunta al icono (que está a la derecha del texto) */
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    width: 12px; height: 12px;
-    background: #25D366;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-  }
-
-  /* Oculta el rótulo en móviles pequeños para no tapar contenido */
-  @media (max-width:520px){ .whatsapp-label{ display:none; } }
-
-  .whatsapp-float{
+  .wa-btn{
     position: relative;
     width: 56px; height: 56px; border-radius: 50%;
     background: #25D366;
@@ -199,34 +176,57 @@
     text-decoration: none;
     transition: transform .1s ease;
   }
-  .whatsapp-float:hover{ transform: translateY(-1px); }
-  .whatsapp-float svg{ width:28px; height:28px; fill:#fff; }
+  .wa-btn:hover{ transform: translateY(-1px); }
+  .wa-btn svg{ width:28px; height:28px; fill:#fff; }
 
-  /* Efecto pulso */
-  .whatsapp-float::after{
+  /* Pulso suave */
+  .wa-btn::after{
     content:""; position:absolute; inset:0; border-radius:50%;
-    box-shadow:0 0 0 0 rgba(37,211,102,.6); animation:pulse 2s infinite;
+    box-shadow:0 0 0 0 rgba(37,211,102,.55); animation:waPulse 2s infinite;
   }
-  @keyframes pulse{
-    0%{ box-shadow:0 0 0 0 rgba(37,211,102,.6); }
+  @keyframes waPulse{
+    0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); }
     70%{ box-shadow:0 0 0 18px rgba(37,211,102,0); }
     100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
   }
+
+  .wa-label{
+    position: relative;
+    background: #25D366;     /* verde WhatsApp */
+    color: #fff;              /* texto blanco */
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-weight: 700;
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    white-space: nowrap;
+  }
+  /* colita a la izquierda (apunta al botón) */
+  .wa-label::before{
+    content:"";
+    position: absolute;
+    left: -6px;               /* pegado al icono */
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 12px; height: 12px;
+    background: #25D366;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+
+  /* Oculta el rótulo en móviles pequeños */
+  @media (max-width:520px){ .wa-label{ display:none; } }
 </style>
 
-<div class="whatsapp-wrap">
-  <span class="whatsapp-label">¿Puedo ayudarte?</span>
-  <a class="whatsapp-float"
+<div id="wa-wrap">
+  <a class="wa-btn"
      href="https://api.whatsapp.com/send?phone=34696149110&text=Hola%20quiero%20info%20sobre%20la%20Car%20Fire%20Blanket%20PRO"
      target="_blank" rel="noopener" aria-label="Abrir chat de WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M19.11 17.04c-.26-.13-1.53-.75-1.77-.83-.24-.09-.41-.13-.59.13-.17.26-.68.83-.84 1-.15.17-.31.2-.57.07-.26-.13-1.08-.4-2.06-1.27-.76-.68-1.27-1.52-1.42-1.78-.15-.26-.02-.4.11-.53.12-.12.26-.31.39-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.59-1.42-.81-1.95-.21-.51-.43-.44-.59-.44-.15 0-.32-.02-.49-.02-.17 0-.45.06-.69.32-.24.26-.91.88-.91 2.15s.93 2.49 1.06 2.67c.13.17 1.83 2.79 4.44 3.91.62.27 1.11.43 1.49.55.63.2 1.21.17 1.67.1.51-.08 1.53-.63 1.75-1.24.22-.61.22-1.14.15-1.24-.06-.1-.24-.17-.5-.3zM16.08 28C9.39 28 4 22.61 4 15.92 4 9.24 9.39 3.84 16.08 3.84c6.68 0 12.08 5.39 12.08 12.08S22.76 28 16.08 28zm0-21.54c-5.2 0-9.46 4.26-9.46 9.46s4.26 9.46 9.46 9.46 9.46-4.26 9.46-9.46-4.26-9.46-9.46-9.46z"/>
     </svg>
   </a>
-
+  <span class="wa-label">¿Puedo ayudarte?</span>
 </div>
-
-
 
 </body>
 </html>
