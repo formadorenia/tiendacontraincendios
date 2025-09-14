@@ -37,12 +37,24 @@
     @media(min-width:720px){ .card{ grid-column: span 6; } }
     @media(min-width:1024px){ .card{ grid-column: span 4; } }
     .badge{ display:inline-block; padding:4px 8px; border-radius:999px; font-size:12px; font-weight:700; color:#0b0d12; background: var(--accent-2); margin-left:8px; }
+    .nav{display:flex;gap:14px;justify-content:center;margin:10px 0 0}
+.nav a{color:#8ab4f8;text-decoration:none;font-weight:600}
+.nav a:hover{text-decoration:underline}
+
   </style>
 </head>
 <body>
   <header>
     <h1 class="title">Tienda Contra Incendios</h1>
     <p class="sub">Compra con pagos 100% seguros a través de Stripe. Elige tu producto y finaliza la compra en nuestro checkout cifrado.</p>
+    <nav class="nav">
+  <a href="/tiendacontraincendios/">Inicio</a>
+  <a href="/tiendacontraincendios/car-fire-blanket-pro.html">Manta PRO</a>
+  <a href="/tiendacontraincendios/maus-stixx-pro.html">Stixx PRO</a>
+  <a href="/tiendacontraincendios/maus-xtin-klein.html">Xtin Klein</a>
+  <a href="/tiendacontraincendios/detector-wifi.html">Detector WiFi</a>
+</nav>
+
   </header>
 
   <main class="grid">
