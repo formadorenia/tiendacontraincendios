@@ -156,10 +156,28 @@
 <style>
   .whatsapp-wrap{
     position:fixed; right:16px; bottom:16px; display:flex; align-items:center; gap:10px; z-index:9999;
-  }
-  .whatsapp-label{
-    background:#ffffff; color:#0b0d12; padding:10px 12px; border-radius:999px; font-weight:700;
-    box-shadow:0 6px 16px rgba(0,0,0,.25);
+  }.whatsapp-label{
+  position: relative;
+  background: #25D366;         /* verde WhatsApp */
+  color: #fff;                  /* texto blanco */
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+
+/* “colita” que apunta al botón */
+.whatsapp-label::after{
+  content:"";
+  position:absolute;
+  right:-6px;                   /* pegado al icono */
+  top:50%;
+  transform: translateY(-50%) rotate(45deg);
+  width:12px; height:12px;
+  background:#25D366;
+  border-radius:2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+
   }
   /* Oculta el rótulo en móviles pequeños para no tapar contenido */
   @media (max-width:520px){ .whatsapp-label{ display:none; } }
